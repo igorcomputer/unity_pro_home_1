@@ -9,7 +9,7 @@ namespace Assets.Scripts.GameSystem
 
     public sealed class KeyboardInput : MonoBehaviour, IGameUpdateListener
     {
-        public Action<Vector2> onSideMove; 
+        public Action<Vector2> OnSideMove; 
 
         void IGameUpdateListener.OnUpdate(float deltaTime)
         {
@@ -31,7 +31,7 @@ namespace Assets.Scripts.GameSystem
 
         private void SideMove(Vector2 direction)
         {
-            this.onSideMove?.Invoke(direction); 
+            this.OnSideMove?.Invoke(direction); 
         }
 
     }

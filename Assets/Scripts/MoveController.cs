@@ -6,14 +6,11 @@ namespace Assets.Scripts.GameSystem
 {
     public class MoveController : MonoBehaviour, IGameStartListener, IGameFinishListener
     {
-        [SerializeField]
-        private Player player;
+        [SerializeField] private PlayerController _playerController;
 
-        [SerializeField]
-        private KeyboardInput inputKeyboard;
+        [SerializeField] private KeyboardInput _keyboardInput;
 
-        [SerializeField]
-        private MoveInput inputMove;
+        [SerializeField] private MoveInput _inputMove;
 
         private float gutterWidth = 3f;
         private int[] roads = new int[] { 0, 1, 2 };
@@ -22,14 +19,14 @@ namespace Assets.Scripts.GameSystem
 
         void IGameStartListener.OnStartGame()
         {
-            this.inputMove.onMove += this.onMove; 
-            this.inputKeyboard.onSideMove += this.onSideMove; 
+            this._inputMove.OnMove += this.onMove; 
+            this._keyboardInput.OnSideMove += this.onSideMove; 
         }
 
         void IGameFinishListener.OnFinishGame()
         {
-            this.inputMove.onMove += this.onMove; 
-            this.inputKeyboard.onSideMove -= this.onSideMove; 
+            this._inputMove.OnMove += this.onMove; 
+            this._keyboardInput.OnSideMove -= this.onSideMove; 
         }
 
         private void onSideMove(Vector2 direction)
@@ -40,12 +37,12 @@ namespace Assets.Scripts.GameSystem
         private void onMove()
         {
             var offset = Vector3.forward * Time.deltaTime; 
-            this.player.Move(offset); 
+            this._playerController.Move(offset); 
         }
 
         private void SideMove(Vector2 direction)
         {
-            var playerPosition = this.player.GetPosition();
+            var playerPosition = this._playerController.GetPosition();
             var targetPosition = new Vector3();
             targetPosition.y = playerPosition.y;
             targetPosition.z = playerPosition.z;
@@ -57,7 +54,7 @@ namespace Assets.Scripts.GameSystem
                 _roadIndex++; 
             
             targetPosition.x += _roadIndex * gutterWidth;
-            player.SetPosition(targetPosition);
+            _playerController.SetPosition(targetPosition);
 
         }
 

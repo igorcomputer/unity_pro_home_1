@@ -9,7 +9,7 @@ namespace Assets.Scripts.GameSystem
 
     public class MoveInput : MonoBehaviour, IGameUpdateListener
     {
-        public Action onMove;
+        public Action OnMove;
 
         void IGameUpdateListener.OnUpdate(float deltaTime)
         {
@@ -18,7 +18,7 @@ namespace Assets.Scripts.GameSystem
 
         private void Move()
         {
-            this.onMove.Invoke();
+            this.OnMove.Invoke();
         }
     }
 

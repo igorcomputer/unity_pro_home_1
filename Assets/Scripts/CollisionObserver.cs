@@ -6,16 +6,16 @@ using UnityEngine.Events;
 
 namespace Assets.Scripts.GameSystem
 {
-    public class CollisionHandler : MonoBehaviour
+    public class CollisionObserver : MonoBehaviour
     {
         [SerializeField]
-        private GameManager gameManager;
+        private GameManager _gameManager;
 
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag("wall")) 
             {
-                gameManager.FinishGame();  
+                _gameManager.FinishGame();  
                 Debug.Log("Game Over!"); 
             }
         }

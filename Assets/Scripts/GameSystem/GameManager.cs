@@ -17,24 +17,24 @@ namespace Assets.Scripts.GameSystem
     {
         private GameState State
         {
-            get { return this.state; }
+            get { return this._state; }
         }
 
         [ShowInInspector, ReadOnly]
-        private GameState state;
+        private GameState _state;
 
-        private readonly List<IGameListener> listeners = new();
-        private readonly List<IGameUpdateListener> updateListeners = new();
+        private readonly List<IGameListener> _listeners = new();
+        private readonly List<IGameUpdateListener> _updateListeners = new();
 
         private void Update()
         {
-            if (this.state != GameState.PLAYING)
+            if (this._state != GameState.PLAYING)
                 return;
 
             var deltaTime = Time.deltaTime;
-            for (int i = 0; i < updateListeners.Count; i++)
+            for (int i = 0; i < _updateListeners.Count; i++)
             {
-                var listener = this.updateListeners[i];
+                var listener = this._updateListeners[i];
                 listener.OnUpdate(deltaTime); 
             }
         }
@@ -46,31 +46,31 @@ namespace Assets.Scripts.GameSystem
                 return;
             }
 
-            this.listeners.Add(listener);
+            this._listeners.Add(listener);
 
             if(listener is IGameUpdateListener updateListener) 
             {
-                this.updateListeners.Add(updateListener); 
+                this._updateListeners.Add(updateListener); 
             }
         }
 
         [Button]
         public void StartGame()
         {
-            foreach (var listener in this.listeners)
+            foreach (var listener in this._listeners)
             {
                 if(listener is IGameStartListener startListener){
                     startListener.OnStartGame();
                 }
             }
 
-            this.state = GameState.PLAYING;
+            this._state = GameState.PLAYING;
         }
 
         [Button]
         public void PauseGame()
         {
-            foreach (var listener in this.listeners)
+            foreach (var listener in this._listeners)
             {
                 if (listener is IGamePauseListener pausetListener)
                 {
@@ -78,13 +78,13 @@ namespace Assets.Scripts.GameSystem
                 }
             }
 
-            this.state = GameState.PAUSED;
+            this._state = GameState.PAUSED;
         }
 
         [Button]
         public void ResumeGame()
         {
-            foreach (var listener in this.listeners)
+            foreach (var listener in this._listeners)
             {
                 if (listener is IGameResumeListener resumeListener)
                 {
@@ -92,14 +92,14 @@ namespace Assets.Scripts.GameSystem
                 }
             }
 
-            this.state = GameState.PLAYING;
+            this._state = GameState.PLAYING;
 
         }
 
         [Button]
         public void FinishGame()
         {
-            foreach (var listener in this.listeners)
+            foreach (var listener in this._listeners)
             {
                 if (listener is IGameFinishListener finishListener)
                 {
@@ -107,7 +107,7 @@ namespace Assets.Scripts.GameSystem
                 }
             }
 
-            this.state = GameState.FINISHED; 
+            this._state = GameState.FINISHED; 
         }
     }
 }

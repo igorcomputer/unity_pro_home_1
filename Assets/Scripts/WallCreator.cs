@@ -6,26 +6,27 @@ namespace Assets.Scripts.GameSystem
 {
     public class WallCreator : MonoBehaviour, IGameUpdateListener
     {
-        public GameObject objectToCreate;
-        public float timeInterval = 1f;
-        private float timer = 0f;
-        private Vector3Int randomPosition;
-        private int[] roadsCoordsX = { 0, 3, 6 };
+        [SerializeField] private GameObject _objectToCreate;
+        [SerializeField] private float _timeInterval = 1f;
+
+        private float _timer = 0f;
+        private Vector3Int _randomPosition;
+        private int[] _roadsCoordsX = { 0, 3, 6 };
 
         public void OnUpdate(float deltaTime)
         {
-            timer += deltaTime;
-            if (timer >= timeInterval)
+            _timer += deltaTime;
+            if (_timer >= _timeInterval)
             {
                 int randomZ = Random.Range(1, 26);
                 int randomXIndex = Random.Range(0, 3);
 
-                randomPosition = new Vector3Int(roadsCoordsX[randomXIndex], 1, randomZ);
+                _randomPosition = new Vector3Int(_roadsCoordsX[randomXIndex], 1, randomZ);
 
-                Debug.Log(randomPosition);
+                Debug.Log(_randomPosition);
 
-                Instantiate(objectToCreate, randomPosition, Quaternion.identity);
-                timer = 0f;
+                Instantiate(_objectToCreate, _randomPosition, Quaternion.identity);
+                _timer = 0f;
             }
         }
 
