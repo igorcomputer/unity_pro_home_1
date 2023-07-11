@@ -535,7 +535,7 @@ GameObject:
   - component: {fileID: 344941573}
   - component: {fileID: 344941574}
   m_Layer: 0
-  m_Name: CountDown
+  m_Name: CountDownController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -554,7 +554,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1626430191}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &344941574
 MonoBehaviour:
@@ -568,8 +568,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f02634cb0e3bed4c93646784119f425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countdownTimeDefault: 3
-  countdownTime: 0
+  _countdownTimeDefault: 5
+  _countdownTime: 0
+  _gameManager: {fileID: 1626430193}
 --- !u!1 &373609641
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,7 +698,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1626430191}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &427545078
 MonoBehaviour:
@@ -711,8 +712,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f73e1a2e64cd3f4d8aa9f827d9fd98a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CountdownText: {fileID: 269721558}
-  countdown: {fileID: 344941574}
+  _countdownText: {fileID: 269721558}
+  _countDownController: {fileID: 344941574}
 --- !u!1 &633048997
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,9 +758,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e894afe06dd2949967cfd37c1db461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 991325979}
-  inputKeyboard: {fileID: 649316445}
-  inputMove: {fileID: 2039070814}
+  _playerController: {fileID: 991325979}
+  _keyboardInput: {fileID: 649316445}
+  _inputMove: {fileID: 2039070814}
 --- !u!1 &649316442
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,7 +999,7 @@ GameObject:
   - component: {fileID: 991325979}
   - component: {fileID: 991325980}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1111,7 +1112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d62cd8e6a1155d24ea1ac34bf8de9b76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
+  _speed: 2.5
 --- !u!114 &991325980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1124,7 +1125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22aed86643e1ed74c8b79cf195d37365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 1626430193}
+  _gameManager: {fileID: 1626430193}
 --- !u!1 &1061658667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,7 +1190,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1626430191}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1156310318
 MonoBehaviour:
@@ -1203,8 +1204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 125745f6f10a2f94fb23c1d595449e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToCreate: {fileID: 4525590253767162318, guid: c19c79c20e984e4449d24b67030165d0, type: 3}
-  timeInterval: 1
+  _objectToCreate: {fileID: 4525590253767162318, guid: c19c79c20e984e4449d24b67030165d0, type: 3}
+  _timeInterval: 1
 --- !u!1 &1187487525
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,11 +1706,11 @@ Transform:
   - {fileID: 649316444}
   - {fileID: 2039070813}
   - {fileID: 633048998}
-  - {fileID: 1684171846}
   - {fileID: 427545077}
   - {fileID: 344941573}
   - {fileID: 3941550949701356184}
   - {fileID: 1156310317}
+  - {fileID: 1903425070}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1737,52 +1738,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c38199551787e4e8ca0fca2458f0f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1684171845
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1684171846}
-  - component: {fileID: 1684171847}
-  m_Layer: 0
-  m_Name: GameLauncher
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1684171846
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684171845}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1626430191}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1684171847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684171845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bb0aa87276051b49999d5458b3a6564, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 1626430193}
-  countdown: {fileID: 344941574}
 --- !u!1 &1705732978
 GameObject:
   m_ObjectHideFlags: 0
@@ -1866,31 +1821,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1705732981}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 344941574}
-        m_TargetAssemblyTypeName: Assets.Scripts.GameSystem.CountDown, Assembly-CSharp
-        m_MethodName: StartCountDown
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1705732980}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1705732981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1929,6 +1860,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705732978}
   m_CullTransparentMesh: 1
+--- !u!1 &1903425069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1903425070}
+  - component: {fileID: 1903425071}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1903425070
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903425069}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1626430191}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1903425071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903425069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488b088d546d49f4daf7b04e1da184e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonStart: {fileID: 1705732980}
+  _buttonPause: {fileID: 2063325928}
+  _countDownController: {fileID: 344941574}
 --- !u!1 &2039070812
 GameObject:
   m_ObjectHideFlags: 0
@@ -2056,31 +2034,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2063325929}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1626430193}
-        m_TargetAssemblyTypeName: Assets.Scripts.GameSystem.GameManager, Assembly-CSharp
-        m_MethodName: PauseGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1705732980}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2063325929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2132,7 +2086,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1626430191}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7519244025114681439
 GameObject:
@@ -2144,7 +2098,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3941550949701356184}
   m_Layer: 0
-  m_Name: CollisionHandler
+  m_Name: CollisionObserver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
